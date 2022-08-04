@@ -62,3 +62,23 @@ This deliverable requested the statistical results from two algorithms: Balanced
 | SMOTEENN | 0.638 | <table> <tbody> <tr><td></td><td>high_pr</td><td>low_pr</td></tr> <tr> <td>high</td> <td>57</td>  <td>30</td>  </tr>  <tr> <td>low</td> <td>5537</td>  <td>11581</td>  </tr>  </tbody>  </table> | <table>  <thead>  <tr>  <th></th>  <th>Precision</th>  <th>Recall</th>  </tr>  </thead>  <tbody>  <tr>  <td>high_risk</td>  <td>0.01</code></td>  <td>0.66</td>  </tr>  <tr>  <td>low_risk</td>  <td>1.00</td>  <td>0.68</td>  </tr>  </tbody>  </table> |
 | BalancedRandomForestClassifier | 0.787 | <table> <tbody> <tr><td></td><td>high_pr</td><td>low_pr</td></tr> <tr> <td>high</td> <td>58</td>  <td>29</td>  </tr>  <tr> <td>low</td> <td>1582</td>  <td>15536</td>  </tr>  </tbody>  </table> | <table>  <thead>  <tr>  <th></th>  <th>Precision</th>  <th>Recall</th>  </tr>  </thead>  <tbody>  <tr>  <td>high_risk</td>  <td>0.04</code></td>  <td>0.67</td>  </tr>  <tr>  <td>low_risk</td>  <td>1.00</td>  <td>0.91</td>  </tr>  </tbody>  </table> |
 | EasyEnsembleClassifier | 0.925 | <table> <tbody> <tr><td></td><td>high_pr</td><td>low_pr</td></tr> <tr> <td>high</td> <td>79</td>  <td>8</td>  </tr>  <tr> <td>low</td> <td>978</td>  <td>16140</td>  </tr>  </tbody>  </table> | <table>  <thead>  <tr>  <th></th>  <th>Precision</th>  <th>Recall</th>  </tr>  </thead>  <tbody>  <tr>  <td>high_risk</td>  <td>0.07</code></td>  <td>0.91</td>  </tr>  <tr>  <td>low_risk</td>  <td>1.00</td>  <td>0.94</td>  </tr>  </tbody>  </table> |
+
+### Overview
+The purpose of this analysis is to examine different machine learning algorithms to attempt to accurately predict whether a loan is a **low risk** loan or a **high risk** loan.  There are a large number of potential features that can help inform these predictions, some of which are strings and needed to be converted to numeric values via `pd.get_dummies()`.
+- One important characteristic of this dataset is that there are significantly more **low risk** loans than **high risk** loans.  This will be important for different sampling methods.
+
+### Algorithm Descriptions
+#### RandomOverSampler
+A standard oversampling algorithm, choosing to oversample the minority population to balance out the numbers of each class.
+#### SMOTE
+Another oversampling algorithm, taking members of the minority population and "merging" them with nearby neighbors to form a new entry, and using that to bolster the minority sample numbers.
+
+[SMOTE Tutorial](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/)
+#### ClusterCentroids
+#### SMOTEENN
+#### BalancedRandomForestClassifier
+#### EasyEnsembleClassifier
+
+### Results
+
+### Summary
