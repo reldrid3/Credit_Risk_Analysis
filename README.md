@@ -64,8 +64,8 @@ This deliverable requested the statistical results from two algorithms: Balanced
 | EasyEnsembleClassifier | 0.925 | <table> <tbody> <tr><td></td><td>high_pr</td><td>low_pr</td></tr> <tr> <td>high</td> <td>79</td>  <td>8</td>  </tr>  <tr> <td>low</td> <td>978</td>  <td>16140</td>  </tr>  </tbody>  </table> | <table>  <thead>  <tr>  <th></th>  <th>Precision</th>  <th>Recall</th>  </tr>  </thead>  <tbody>  <tr>  <td>high_risk</td>  <td>0.07</code></td>  <td>0.91</td>  </tr>  <tr>  <td>low_risk</td>  <td>1.00</td>  <td>0.94</td>  </tr>  </tbody>  </table> |
 
 ### Overview
-The purpose of this analysis is to examine different machine learning algorithms to attempt to accurately predict whether a loan is a **low risk** loan or a **high risk** loan.  There are a large number of potential features that can help inform these predictions, some of which are strings and needed to be converted to numeric values via `pd.get_dummies()`.
-- One important characteristic of this dataset is that there are significantly more **low risk** loans than **high risk** loans.  This will be important for different sampling methods.
+The purpose of this analysis is to examine different machine learning algorithms to attempt to accurately predict whether a loan is a **low-risk** loan or a **high-risk** loan.  There are a large number of potential features that can help inform these predictions, some of which are strings and needed to be converted to numeric values via `pd.get_dummies()`.
+- One important characteristic of this dataset is that there are significantly more **low-risk** loans than **high-risk** loans.  This will be important for different sampling methods.
 
 ### Algorithm Descriptions
 #### RandomOverSampler
@@ -93,4 +93,6 @@ EasyEnsembleClassifier is an ensemble classifier which uses multiple AdaBoost cl
 - When it came to recall, a similar result to accuracy came out, where the oversampling algorithms were better than pure undersampling, and ensemble methods were superior.  Both ensemble methods had > 90% recall for low-risk loans, but EasyEnsemble had significantly better high-risk recall: 91% to 67%.
 
 ### Summary
-Of all the methods, the clear winner is the **EasyEnsembleClassifier** algorithm.  It had all around superior results in each category.  The only category it still had poor results for is high-risk precision - there is a significant chance of high-risk-predicted loan actually being a low-risk loan.  However, it was far-and-away the best at recalling high-risk loans, with 91% of high-risk loans (79 of 87) accurately marked as high-risk.  When it comes to a loan evaluation, it is much more important that high-risk loans be accurately marked as high-risk than avoiding false positives, so that superior recall makes **EasyEnsembleClassifier** the *only* reasonable choice.
+Of all the methods, the clear winner is the **EasyEnsembleClassifier** algorithm.  It had all around superior results in each category.  The only category it still had poor results for is high-risk precision - there is a significant chance of high-risk-predicted loan actually being a low-risk loan.  However, it was far-and-away the best at recalling high-risk loans, with 91% of high-risk loans (`79 / (79 + 8)`) accurately marked as high-risk.  When it comes to a loan evaluation, it is much more important that high-risk loans be accurately marked as high-risk than avoiding false positives, so that superior recall makes **EasyEnsembleClassifier** the *only* reasonable choice.
+
+Ideally, having a larger sample of high-risk loans would allow for more training and testing entries and reduce the impact of resampling, which *might* improve other methods, but likely the EasyEnsembleClassifier would be even better with more training.
