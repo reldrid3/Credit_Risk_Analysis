@@ -69,15 +69,23 @@ The purpose of this analysis is to examine different machine learning algorithms
 
 ### Algorithm Descriptions
 #### RandomOverSampler
-A standard oversampling algorithm, choosing to oversample the minority population to balance out the numbers of each class.
+RandomOverSampler is a standard oversampling algorithm, choosing to oversample the minority population to balance out the numbers of each class.
+
 #### SMOTE
 Another oversampling algorithm, taking members of the minority population and "merging" them with nearby neighbors to form a new entry, and using that to bolster the minority sample numbers.
 
 [SMOTE Tutorial](https://machinelearningmastery.com/smote-oversampling-for-imbalanced-classification/)
 #### ClusterCentroids
+ClusterCentroids is an undersampling algorithm that lessens the majority population by performing k-means clustering on the majority and selecting for values close to the centroids of the clusters.
+
 #### SMOTEENN
+SMOTEENN is a combined algorithm, which oversamples with SMOTE and then undersamples with ENN (edited nearest neighbors), which lowers the majority by removing sample values that are close to boundaries.
+
 #### BalancedRandomForestClassifier
+BalancedRandomForestClassifier is a random forest algorithm that balances each bootstrap sample by undersampling.  Random forest classifiers should always be used carefully, so as not to overfit to the data.
+
 #### EasyEnsembleClassifier
+EasyEnsembleClassifier is an ensemble classifier which uses multiple AdaBoost classifiers to sequentially focus on incorrect weights, over a series of undersampled bootstraps.
 
 ### Results
 
